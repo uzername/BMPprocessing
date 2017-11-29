@@ -44,6 +44,17 @@ public class UInt16 extends Number implements Comparable<UInt16> {
     this(Integer.parseInt(value));
   }
 
+  /**
+   * assemble number from array with 2 bytes: last one is MSB, first one is LSB
+   * @param in_bytes 
+   */
+  public void AssignUInt16FromByteArrayLSBFirst(int[] in_bytes) {
+      this.value = 0;
+      this.value = this.value | ((int) in_bytes[0]);
+      this.value = this.value | (((int) in_bytes[1])<<8);
+      
+  }
+  
   /** The value of this as a byte. */
   @Override
   public byte byteValue() {

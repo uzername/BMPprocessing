@@ -1,5 +1,7 @@
 package bmpFileProcessing.BMPheaders;
 
+import helper.UInt16;
+
 /**
  * BMPCOREHEADER
  * Contains metadata info about this BMP file. The most basic header
@@ -10,8 +12,16 @@ package bmpFileProcessing.BMPheaders;
  */
 public class BMPHeader {
         public helper.UInt32 HeaderSize;
-	public Integer Width;
-	public Integer Height;
+	public helper.UInt16 Width = new UInt16(0);
+	public helper.UInt16 Height = new UInt16(0);
 	public helper.UInt16 Planes;
 	public helper.UInt16 BitCount;
+        @Override
+        public String toString() {
+            return "BITMAPCOREHEADER: {HeaderSize: "+HeaderSize.toString()
+                    +"; Width: "+Width.toString()
+                    +"; Height: "+Height.toString()
+                    +"Planes: "+Planes.toString()
+                    +"BitCount: "+BitCount.toString()+"}";
+        }
 }

@@ -52,7 +52,7 @@ public class UInt32 extends Number implements Comparable<UInt32> {
       this.value = this.value | ((long) in_bytes[0]);
       this.value = this.value | (((long) in_bytes[1])<<8);
       this.value = this.value | (((long) in_bytes[2])<<16);
-      this.value = this.value | (((long) in_bytes[2])<<32);
+      this.value = this.value | (((long) in_bytes[3])<<32);
   }
   /** The value of this as a byte. */
   @Override
