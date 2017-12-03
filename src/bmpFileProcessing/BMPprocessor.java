@@ -40,7 +40,11 @@ public class BMPprocessor {
     }
     public BMPprocessor initializeFromFilePath(String pathToFile) 
                         throws FileNotFoundException, IOException, BMPbadFileHeaderException {
-        this.backendImageToRead = new RandomAccessFile(pathToFile, "rw");
+        if (backendImageToRead!=null) {
+            backendImageToRead.close();
+        }
+            this.backendImageToRead = new RandomAccessFile(pathToFile, "rw");
+        
         //check correctness of file
         this.backendImageToRead.seek(0);
         int byte1 = 0; int byte2 = 0;
@@ -197,7 +201,7 @@ public class BMPprocessor {
                  break;
                }
                case("OS22XBITMAPHEADER"): {
-                 throw new BMPUnsupportedHeaderSizeException("TODO: handle OS22XBITMAPHEADER");
+                 throw new BMPUnsupportedHeaderSizeException("TODO: handle OS22XBITMAPHEADER;"+"size: "+tmpHeaderSize.toString());
                }
                case("BITMAPINFOHEADER"): {
                    tmpHeader = instHeaderProcessor.fill_BITMAPINFOHEADER(tmpHeader);
@@ -205,11 +209,11 @@ public class BMPprocessor {
                }
                case("BITMAPV2INFOHEADER"): {
                   //not supported by MS. undocumented 
-                  throw new BMPUnsupportedHeaderSizeException("TODO: handle BITMAPV2INFOHEADER");
+                  throw new BMPUnsupportedHeaderSizeException("TODO: handle BITMAPV2INFOHEADER;"+"size: "+tmpHeaderSize.toString());
                }
                case("BITMAPV3INFOHEADER"): {
                   //not supported by MS. undocumented 
-                  throw new BMPUnsupportedHeaderSizeException("TODO: handle BITMAPV3INFOHEADER");
+                  throw new BMPUnsupportedHeaderSizeException("TODO: handle BITMAPV3INFOHEADER;"+"size: "+tmpHeaderSize.toString());
                   
                }
                case("BITMAPV4INFOHEADER"): {

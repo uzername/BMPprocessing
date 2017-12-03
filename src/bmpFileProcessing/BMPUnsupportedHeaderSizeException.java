@@ -8,8 +8,9 @@ public class BMPUnsupportedHeaderSizeException extends Exception {
     public BMPUnsupportedHeaderSizeException() {
     
     }
+    
     public BMPUnsupportedHeaderSizeException(String msg) {
-    
+        super(msg);
     }
-    
+
 }

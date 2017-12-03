@@ -34,6 +34,8 @@ public class BMPBitmapInfoHeader extends BMPHeader {
         String result;
         result = super.toString()+"\n";
         result += "BITMAPINFOHEADER:{ Compression: "+Compression.toString()
+                 +"; Width(overriden): "+Width.toString()
+                 +"; Height(overriden): "+Height.toString()
                  +"; SizeImage: "+SizeImage.toString()
                  +"; PelsPerMeterX: "+PelsPerMeterX.toString()
                  +"; PelsPerMeterY: "+PelsPerMeterY.toString()
